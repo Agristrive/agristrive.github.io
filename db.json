@@ -1,10 +1,9 @@
 {
     "user-data": {
-        "users": {
+        "users" : {
             "user": {
                 "username": "admin",
-                "password": "CDT04",
-                "farms": {}
+                "password": "CDT04"
             }
         }
     }
