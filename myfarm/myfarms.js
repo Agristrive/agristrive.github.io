@@ -337,6 +337,9 @@ function on_delete_submission(submission_type) {
 }
 
 function on_page_start(){
+    document.cookie = "username=grah;"
+    console.log(document.cookie)
+    
     document.getElementById("rename_form").addEventListener("submit", function(a){
         a.preventDefault()
         on_rename_submission(a, a.submitter.value)
