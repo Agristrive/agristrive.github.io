@@ -456,21 +456,15 @@ function check_account(){
 
 function check_cookie(){
     let cookie_data = document.cookie
-    let returned = null
+    let returned = []
     
     for (let i=0; i<cookie_data.split(";").length; i++){
         let index = cookie_data.split(";")[i].split("=")[0]
         let value = cookie_data.split(";")[i].split("=")[1]
         
         if (index == "username"){
-            if (returned == null){
-                returned = []
-            }
             returned[0] = value
         }else if(index == "password"){
-            if (returned == null){
-                returned = []
-            }
             returned[1] = value
         }
         console.log(index, value, returned)
@@ -485,7 +479,7 @@ function on_page_start(){
     let returned = check_cookie()
     check_account()
 
-    if (returned){
+    if (returned[0] && returned[1]){
         document.body.setAttribute("cookied_user", returned[0])
         document.body.setAttribute("cookied_password", returned[1])
 
