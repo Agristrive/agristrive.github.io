@@ -83,6 +83,8 @@ async function log_in(input_name, input_pass){
     var correct_user = false
     var correct_pass = false
     let data = null
+
+    console.log(input_name, input_pass)
     var returned = await get_json(db_url)
         .then(result => {
             let users = result["user-data"]["users"];
@@ -100,7 +102,7 @@ async function log_in(input_name, input_pass){
                         logged_user = username
                         data = result
                         console.log(document.cookie)
-                        window.location.href = "../myfarm/myfarms";
+                        //window.location.href = "../myfarm/myfarms";
                     }
                 }
             }
