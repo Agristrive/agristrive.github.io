@@ -473,7 +473,9 @@ function check_cookie(){
             }
             returned[1] = value
         }
+        console.log(index, value, returned)
     }
+    console.log(returned[0], returned[1])
     return returned
 }
 
