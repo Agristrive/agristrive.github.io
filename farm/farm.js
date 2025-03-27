@@ -1,5 +1,5 @@
-var height
-var width
+var height = 3
+var width = 3
 var current = []
 var inputType
 var mouseX
@@ -14,15 +14,12 @@ var held = false
 var holdType = null
 
 function on_start(){
-    var data = []
+    size_change(null, 0, true)
 
     height = 3
     width = 3
 
-    size_change(null, 0, true)
-
     document.addEventListener('contextmenu', event => event.preventDefault());
-
 }
 
 function size_change(type, delta, createNew) {
@@ -50,6 +47,8 @@ function size_change(type, delta, createNew) {
         width = 32
         delta = 0
     }
+
+
     width_div.innerText = width
     height_div.innerText = height
 

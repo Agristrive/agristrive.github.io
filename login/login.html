@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="../style.css">
-<script src="farm.js"></script>
 <script src="../reader.js"></script>
-
+<script src="login.js"></script>
 <style>
     .form_con{
         text-align: center; 
@@ -14,7 +13,7 @@
 </style>
 
 <html>
-    <body class="bg_color" style="margin: 0px;" onload="on_start()">
+    <body class="bg_color" style="margin: 0px;" onload="add_listeners()">
         <div style="position: fixed; width: 100%; height: 100%; top: 0px; left: 0px;">
             <img src="../img/agristrive_bg.jpg" alt="" style="width: 100%; height: 100%; opacity: 20%;">
         </div>
@@ -25,7 +24,7 @@
                     <div style="font-size: 60px;">SIGN UP</div>
                     <hr style="border-color: #5b4f47;">
     
-                    <form action="" class="base_font">
+                    <form action="" id="signin_form"class="base_font" onkeydown="return event.key != 'Enter'" onsubmit="event.preventDefault();">
                         USERNAME <br>
                         <input type="text" name="login_user"class="base_font rename_input" style="height: 40px;">
                         <br> PASSWORD <br>
@@ -41,7 +40,7 @@
                     <div style="font-size: 60px;">LOGIN</div>
                     <hr style="border-color: #5b4f47;">
     
-                    <form action="" class="base_font">
+                    <form action="" class="base_font"  id="login_form" onkeydown="return event.key != 'Enter'" onsubmit="event.preventDefault();">
                         USERNAME <br>
                         <input type="text" name="login_user"class="base_font rename_input" style="height: 40px;">
                         <br> PASSWORD <br>
@@ -58,7 +57,10 @@
 
         <div class="main_color" style="width: 100%; height: 120px; position: fixed; top: 0px; border-bottom: solid; border-color: #5b4f47;">
             <img src="../img/agristrive_logo.png" alt="logo" style="width: 120px; height: 120px; position: absolute; top: 0px; left: 30px;">
-            <div class="base_font" style="position: absolute; font-size: 30px; padding-left: 150px; padding-top: 22px;"> Strive For Quality <br> Harvest Excellence</div>
+            <div class="base_font" style="position: absolute; font-size: 30px; padding-left: 150px; padding-top: 22px;">
+                <div style="height: fit-content; font-size: 40px;">Agristrive</div>
+                <div style="font-size: 20px;">Strive for Quality, Harvest Excellence</div>
+           </div>
             <div class="base_font" style="position: absolute; text-align: right; right: 0px; bottom: 0px; font-size: 25px; padding: 10px;">
                 &nbsp &nbsp<a href="" class="base_font" style="text-decoration: none">Home</a>
                 &nbsp &nbsp<a href="myfarm/myfarms" class="base_font" style="text-decoration: none">My Farms</a>

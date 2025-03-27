@@ -1,3 +1,7 @@
+
+var db_url = 'https://api.jsonbin.io/v3/b/67e1b0a48561e97a50f20770'
+var current_api_key = "$2a$10$SGS2twtc4XUUm71aKY0CRutJwxVY5n7TqpLLRtAol7sKiwFtB.otu"
+
 let amount_farm_buttons = 0
 const base_top = 120
 const base_left = 20
@@ -132,7 +136,7 @@ function set_name(button) {
 };
 
 
-function create_button() {
+function create_button(name, special_settings, true_id) {
     const button = document.createElement("button")
     const hover_container = document.createElement("div")
 
@@ -151,9 +155,23 @@ function create_button() {
     top_container.id = button.id + "top_container"
     hover_container.id = button.id + "hover_container"
 
+    if (name) {
+        button.setAttribute("name", name)
+    }else{
+        button.setAttribute("name", "New Farm")
+    }
+
+    if (true_id) {
+        button.setAttribute("true_id", true_id)
+    }else{
+        button.setAttribute("true_id", Date.now())
+    }
+
     button.setAttribute("order_num", amount_farm_buttons)
-    button.setAttribute("name", "New Farm")
     current_elements.push(button.id)
+
+    show_contents(true, top_container, "flex")
+    show_contents(false, hover_container)
 
     button.addEventListener("mouseover", function() {
         on_hover(true, button.id);
@@ -186,14 +204,87 @@ function create_button() {
     add_inner(hover_container, "rename_button", "67px", "Rename",button)
     add_inner(hover_container, "settings_button", "74px", "Settings", button)
     add_inner(hover_container, "delete_button", "81px", "Delete", button)
+
     change_element_pos()
-
-    log_current()
-
 }
+
+async function get_json(){
+    console.log("Attemping to access JSON")
+    var a = null
+    try{
+        var response =  await fetch(db_url, { headers: {
+            "X-Master-Key": current_api_key,
+            "Content-Type": "application/json"
+          }})
+        var json = await response.json().then(r => {(a = r.record)});
+    }catch(err){
+        console.error("Logging an Error in accessing JSON: " + err)
+    }finally{
+        console.log("Completed Attempt to access JSON")
+        return a
+    }
+}
+
+
+async function write_new_farms(){
+    let current_user = document.body.getAttribute("user")
+    let req = new XMLHttpRequest();
+    document.getElementById("show_loading").style.display = "block"
+    document.getElementById("show_loading").innerText = "UPDATING SERVERS..."
+    req.open("PUT", db_url, true);
+    req.setRequestHeader("Content-Type", "application/json");
+    req.setRequestHeader("X-Master-Key", current_api_key);
+
+    await get_json().then(old_data => {
+        let new_data = old_data
+        for (let i=0; i<new_data['user-data']['users'].length; i++){
+            if (current_user == new_data['user-data']['users'][i]['username']){
+                let index_user = i
+                let user_data = new_data['user-data']['users'][i]
+                let farms_data = user_data['farms']
+                let new_farms_data = []
+                let current_loaded_farms = document.getElementById("button_container").children
+                let temp = []
+                for (const current_farm of current_loaded_farms) {
+                    temp[Number(current_farm.getAttribute("order_num"))] = current_farm
+                }
+
+                for (let f=0; f<temp.length; f++){
+                    let new_thing = {}
+                    let farm = temp[f]
+                    let name = farm.getAttribute('name')
+                    let true_id = farm.getAttribute('true_id')
+                    
+                    new_thing['name'] = name
+                    new_thing['id'] = true_id
+                    let found_plots_data = null
+                    for (let j=0; j<farms_data.length; j++){
+                        if (farms_data[j]['id'] == true_id){
+                            found_plots_data = farms_data[j]['plots']
+                            break
+                        }
+                    }
+
+                    if (found_plots_data){
+                        new_thing['plots'] = found_plots_data
+                    }
+                    new_farms_data.push(new_thing)
+                }
+                new_data['user-data']['users'][i]['farms'] = new_farms_data
+            }
+        }
+        req.onreadystatechange = function(){
+            document.getElementById("show_loading").style.display = "none"
+        }
+        req.send(JSON.stringify(new_data));
+        console.log(JSON.stringify(new_data), current_user)
+    })
+}
+
 
 function add_new_slot() {
     create_button()
+    write_new_farms()
 }
 
 function log_current(){
@@ -231,6 +322,8 @@ function on_rename(button){
     current_selected_button = button
     document.getElementById("rename_text").innerHTML = 'Change Name of Farm Plot<br>' + '"' + button.getAttribute("name") + '"'
     document.getElementById("rename_body").style.display = "flex"
+
+    document.getElementById("rename_form_input").value = button.getAttribute("name")
 }
 
 function change_farm_name(farm_button, new_name){
@@ -241,6 +334,7 @@ function change_farm_name(farm_button, new_name){
 function on_settings(button){
     current_selected_button = button
     document.getElementById("settings_body").style.display = "flex"
+    document.getElementById("settings_name").value = button.getAttribute("name")
 }
 
 function on_delete(button){
@@ -271,6 +365,7 @@ function on_rename_submission(a, submission_type) {
             current_selected_button.setAttribute("name", new_name)
             set_name(current_selected_button)
             document.getElementById("rename_body").style.display = "none"
+            write_new_farms()
         }
     }
     document.getElementById("rename_form").reset()
@@ -290,6 +385,7 @@ function on_setting_submission(a, submission_type) {
                 set_name(current_selected_button)
             }
         }
+        write_new_farms()
     }
     document.getElementById("settings_form").reset()
     document.getElementById("settings_body").style.display = "none"
@@ -326,27 +422,78 @@ function on_delete_submission(submission_type) {
                 current_elements[i] = current_b.id;
                 
             }
-
-            console.log(current_b.getAttribute("order_num"), current_b.id, current_elements[i])
         }
-
+        write_new_farms() 
         change_element_pos();
     }
     log_current()
     document.getElementById("delete_body").style.display = "none";
 }
 
-function on_page_start(){
-    document.cookie = "username=grah;"
-    console.log(document.cookie)
-    
-    document.getElementById("rename_form").addEventListener("submit", function(a){
-        a.preventDefault()
-        on_rename_submission(a, a.submitter.value)
-    })
+function load_account(data, user){
+    let used_data = {}
+    for (let i=0; i<data['user-data']['users'].length; i++){
+        if (data['user-data']['users'][i]['username'] == user) {
+            used_data = data['user-data']['users'][i]
+        }
+    }
+    for (let i=0; i<used_data['farms'].length; i++){
+        create_button(used_data['farms'][i]["name"], null, used_data['farms'][i]["id"])
+    }
+    document.getElementById("show_loading").style.display = "none"
+}
 
-    document.getElementById("settings_form").addEventListener("submit", function(a){
-        a.preventDefault()
-        on_setting_submission(a, a.submitter.value)
-    })
+function check_account(){
+    let check_info_interval = setInterval(() => {
+        if (document.body.getAttribute("data") && document.body.getAttribute("user")){
+            load_account(JSON.parse(document.body.getAttribute("data")), document.body.getAttribute("user"))
+            console.log("loading account")
+            clearInterval(check_info_interval)
+        }
+    }
+    ,500)
+}
+
+function check_cookie(){
+    let cookie_data = document.cookie
+    let returned = null
+    for (let i=0; i<cookie_data.split(";").length; i++){
+        let index = cookie_data.split(";")[i].split("=")[0]
+        let value = cookie_data.split(";")[i].split("=")[1]
+        
+        if (index == "username"){
+            if (returned == null){
+                returned = []
+            }
+            returned[0] = value
+        }else if(index == "password"){
+            if (returned == null){
+                returned = []
+            }
+            returned[1] = value
+        }
+    }
+    return returned
+}
+
+function on_page_start(){
+    let returned = check_cookie()
+    check_account()
+
+    if (returned){
+        document.body.setAttribute("cookied_user", returned[0])
+        document.body.setAttribute("cookied_password", returned[1])
+
+        document.getElementById("rename_form").addEventListener("submit", function(a){
+            a.preventDefault()
+            on_rename_submission(a, a.submitter.value)
+        })
+
+        document.getElementById("settings_form").addEventListener("submit", function(a){
+            a.preventDefault()
+            on_setting_submission(a, a.submitter.value)
+        })
+    }else{
+
+    }
 }

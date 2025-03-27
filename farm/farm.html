@@ -3,7 +3,7 @@
 
 <html>
     <title>Agristrive | Farm</title>
-    <body class="bg_color" style="margin: 0px;" onload="on_start()">
+    <body class="bg_color" style="margin: 0px;" onload="on_start(); size_change(null, 0, true)">
         <div id="container_body" class="main_color main_body" style="width: 1200px; height: 500px; min-height: 500px;">
             <div style="padding: 20px;"> 
                 <header class="base_font" style="font-size: 30px;">insert farm name here</header>
@@ -45,7 +45,10 @@
 
         <div class="main_color" style="width: 100%; height: 120px; position: fixed; top: 0px; border-bottom: solid; border-color: #5b4f47;">
             <img src="../img/agristrive_logo.png" alt="logo" style="width: 120px; height: 120px; position: absolute; top: 0px; left: 30px;">
-            <div class="base_font" style="position: absolute; font-size: 30px; padding-left: 150px; padding-top: 22px;"> Strive For Quality <br> Harvest Excellence</div>
+            <div class="base_font" style="position: absolute; font-size: 30px; padding-left: 150px; padding-top: 22px;">
+                <div style="height: fit-content; font-size: 40px;">Agristrive</div>
+                <div style="font-size: 20px;">Strive for Quality, Harvest Excellence</div>
+           </div>
             <div class="base_font" style="position: absolute; text-align: right; right: 0px; bottom: 0px; font-size: 25px; padding: 10px;">
                 &nbsp &nbsp<a href="../" class="base_font" style="text-decoration: none">Home</a>
                 &nbsp &nbsp<a href="../myfarm/myfarms" class="base_font" style="text-decoration: none">My Farms</a>
