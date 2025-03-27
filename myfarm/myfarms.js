@@ -1,4 +1,3 @@
-
 var db_url = 'https://api.jsonbin.io/v3/b/67e1b0a48561e97a50f20770'
 var current_api_key = "$2a$10$SGS2twtc4XUUm71aKY0CRutJwxVY5n7TqpLLRtAol7sKiwFtB.otu"
 
@@ -277,7 +276,6 @@ async function write_new_farms(){
             document.getElementById("show_loading").style.display = "none"
         }
         req.send(JSON.stringify(new_data));
-        console.log(JSON.stringify(new_data), current_user)
     })
 }
 
@@ -286,17 +284,6 @@ function add_new_slot() {
     create_button()
     write_new_farms()
 }
-
-function log_current(){
-    console.log("-----------------------------------------------------")
-    for (let i=0; i<current_elements.length; i++){
-        const a = document.getElementById(current_elements[i])
-        console.log("[" + i + "] " + current_elements[i] + ": " + a.getAttribute("order_num"))
-    }
-    console.log("-----------------------------------------------------")
-}
-
-
 function on_hover(is_entering, string, specific_color) {
     let click_button = document.getElementById(string)
     click_button.setAttribute('is_hovered', is_entering)
@@ -315,9 +302,7 @@ function on_hover(is_entering, string, specific_color) {
         }
     };
 }
-function on_open(button){
-    console.log(button)
-}
+
 function on_rename(button){
     current_selected_button = button
     document.getElementById("rename_text").innerHTML = 'Change Name of Farm Plot<br>' + '"' + button.getAttribute("name") + '"'
@@ -426,7 +411,6 @@ function on_delete_submission(submission_type) {
         write_new_farms() 
         change_element_pos();
     }
-    log_current()
     document.getElementById("delete_body").style.display = "none";
 }
 
@@ -474,8 +458,6 @@ function check_cookie(){
 }
 
 function on_page_start(){
-    console.log("smegma")
-    console.log(document.cookie)
     let returned = check_cookie()
     check_account()
 
