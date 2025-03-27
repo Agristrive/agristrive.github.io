@@ -99,8 +99,8 @@ async function log_in(input_name, input_pass){
                         correct_pass = password
                         logged_user = username
                         data = result
-
-                        window.location.href = "../myfarm/myfarms";
+                        console.log(document.cookie)
+                        //window.location.href = "../myfarm/myfarms";
                     }
                 }
             }
