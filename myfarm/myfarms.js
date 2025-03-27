@@ -478,6 +478,7 @@ function check_cookie(){
 }
 
 function on_page_start(){
+    console.log(document.cookie)
     let returned = check_cookie()
     check_account()
 
