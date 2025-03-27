@@ -94,8 +94,8 @@ async function log_in(input_name, input_pass){
                 if (input_name == username){
                     correct_user = username
                     if (input_pass == password) {
-                        document.cookie = "username=" + correct_user
-                        document.cookie = "password=" + correct_pass
+                        document.cookie = "username=" + correct_user + ";domain=agristrive.github.io; path=/"
+                        document.cookie = "password=" + correct_pass + ";domain=agristrive.github.io; path=/"
                         correct_pass = password
                         logged_user = username
                         data = result
