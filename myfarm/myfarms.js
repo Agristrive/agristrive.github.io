@@ -14,7 +14,6 @@ const base_top_increase = 20
 const base_left_increase = 20
 
 let row_length = 5
-
 let current_elements = []
 
 let current_selected_button = null
