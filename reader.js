@@ -94,13 +94,13 @@ async function log_in(input_name, input_pass){
                 if (input_name == username){
                     correct_user = username
                     if (input_pass == password) {
-                        document.cookie = "username=" + correct_user + ";domain=agristrive.github.io; path=/"
-                        document.cookie = "password=" + correct_pass + ";domain=agristrive.github.io; path=/"
+                        document.cookie = "username=" + input_name + ";domain=agristrive.github.io; path=/"
+                        document.cookie = "password=" + input_pass + ";domain=agristrive.github.io; path=/"
                         correct_pass = password
                         logged_user = username
                         data = result
                         console.log(document.cookie)
-                        //window.location.href = "../myfarm/myfarms";
+                        window.location.href = "../myfarm/myfarms";
                     }
                 }
             }
