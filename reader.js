@@ -69,8 +69,8 @@ async function signup(input_name, input_pass){
             }
             new_list.push(added)
             result["user-data"]["users"] = new_list
-            document.cookie = "username=" + input_name
-            document.cookie = "password=" + input_pass
+            document.cookie = "username=" + input_name + ";domain=agristrive.github.io; path=/"
+            document.cookie = "password=" + input_pass + ";domain=agristrive.github.io; path=/"
             write(JSON.stringify(result))
         }else{
             user_already_exists()
@@ -101,8 +101,6 @@ async function log_in(input_name, input_pass){
                         correct_pass = password
                         logged_user = username
                         data = result
-                        console.log(document.cookie)
-                        //window.location.href = "../myfarm/myfarms";
                     }
                 }
             }
@@ -111,8 +109,10 @@ async function log_in(input_name, input_pass){
     if (correct_user && correct_pass){
         document.body.setAttribute("data", JSON.stringify(data))
         document.body.setAttribute("user", correct_user)
+        return true
     }else{
         console.log("Incorrect username or password")
+        return false
     }
 }
 
@@ -145,9 +145,15 @@ function on_form_entry(a, type){
     let user = data[0][1]
     let pass = data[1][1]
     if (type == "login"){
-        log_in(user, pass)
+        let success = log_in(user, pass)
+        if (success){
+            window.location.href = "../myfarm/myfarms"
+        }
     }else if(type == "signup"){
-        signup(user, pass)
+        let success = signup(user, pass)
+        if (success){
+            window.location.href = "../myfarm/myfarms"
+        }
     }
 
 }
