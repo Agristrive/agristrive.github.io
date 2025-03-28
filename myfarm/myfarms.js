@@ -437,23 +437,23 @@ function check_account(){
     ,500)
 }
 
-function check_cookie(){
-    let cookie_data = document.cookie
-    let returned = []
-    
-    for (let i=0; i<cookie_data.split(";").length; i++){
-        let index = cookie_data.split(";")[i].split("=")[0]
-        let value = cookie_data.split(";")[i].split("=")[1]
-        
-        if (index == "username"){
-            returned[0] = value
-        }else if(index == "password"){
-            returned[1] = value
+function check_cookie() {
+    let cookie_data = document.cookie;
+    let returned = [];
+
+    for (let i = 0; i < cookie_data.split(";").length; i++) {
+        let index = cookie_data.split(";")[i].split("=")[0].trim();
+        let value = cookie_data.split(";")[i].split("=")[1];
+
+        if (index == "username") {
+            returned[0] = value;
+        } else if (index == "password") {
+            returned[1] = value;
         }
-        console.log(index, value, returned)
+        console.log(index, value, returned);
     }
-    console.log(returned[0], returned[1])
-    return returned
+    console.log(returned[0], returned[1]);
+    return returned;
 }
 
 function on_page_start(){
