@@ -1,0 +1,88 @@
+{
+    "crops":[
+        {
+            "name": "Carrot",
+            "id": "carrot",
+            "time_needed": 100800,
+            "days_between_water": 7,
+            "water_amount": 1,
+            "can_reharvest": false,
+            "day_between_reharvest": 0,
+            "special_info": "blah blah blah",
+            "soil_depth": 0.25,
+            "spacing": 0.5
+        },
+        {
+            "name": "Tomato",
+            "id": "tomato",
+            "time_needed": 115200,
+            "days_between_water": 3,
+            "water_amount": 1,
+            "can_reharvest": false,
+            "day_between_reharvest": 0,
+            "special_info": "blah blah blah",
+            "soil_depth": 20,
+            "spacing": 30
+        },
+        {
+            "name": "Onion",
+            "id": "onion",
+            "time_needed": 144000,
+            "days_between_water": 3,
+            "water_amount": 1,
+            "can_reharvest": false,
+            "day_between_reharvest": 0,
+            "special_info": "blah blah blah",
+            "soil_depth": 16,
+            "spacing": 5
+        },
+        {
+            "name": "Potato",
+            "id": "potato",
+            "time_needed": 129600,
+            "days_between_water": 3,
+            "water_amount": 1,
+            "can_reharvest": false,
+            "day_between_reharvest": 0,
+            "special_info": "blah blah blah",
+            "soil_depth": 5,
+            "spacing": 12
+        },
+        {
+            "name": "Strawberry(from seed)",
+            "id": "strawberryfs",
+            "time_needed": 350401,
+            "days_between_water": 3,
+            "water_amount": 1,
+            "can_reharvest": false,
+            "day_between_reharvest": 0,
+            "special_info": "blah blah blah",
+            "soil_depth": 3,
+            "spacing": 18
+        },
+        {
+            "name": "Strawberry(bare root)",
+            "id": "strawberrybr",
+            "time_needed": 86400,
+            "days_between_water": 3,
+            "water_amount": 1,
+            "can_reharvest": false,
+            "day_between_reharvest": 0,
+            "special_info": "blah blah blah",
+            "soil_depth": 3,
+            "spacing": 18
+        },
+        {
+            "name": "Strawberry(transplant)",
+            "id": "strawberrytp",
+            "time_needed": 50400,
+            "days_between_water": 3,
+            "water_amount": 1,
+            "can_reharvest": false,
+            "day_between_reharvest": 0,
+            "special_info": "blah blah blah",
+            "soil_depth": 2,
+            "spacing": 18
+        }
+    ]
+}
