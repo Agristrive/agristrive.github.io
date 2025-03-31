@@ -1,6 +1,5 @@
 var db_url = 'https://api.jsonbin.io/v3/b/67e1b0a48561e97a50f20770'
 var current_api_key = "$2a$10$SGS2twtc4XUUm71aKY0CRutJwxVY5n7TqpLLRtAol7sKiwFtB.otu"
-
 async function get_json(){
     console.log("Attemping to access JSON")
     var a = null
