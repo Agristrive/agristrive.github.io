@@ -111,6 +111,7 @@ async function log_in(input_name, input_pass){
     if (correct_user && correct_pass){
         document.body.setAttribute("data", JSON.stringify(data))
         document.body.setAttribute("user", correct_user)
+        alert(document.cookie)
         console.log(correct_user)
         change_href(correct_user)
         if (window.location.href == "https://agristrive.github.io/login/login"){
@@ -125,12 +126,12 @@ function change_href(new_name){
     console.log("changing")
     if (new_name){
         let link = document.getElementById("account_tab")
-        if (location.href == "agristrive.github.io"){
-            link.href = "accounts/account-page"
-        }else{
-            link.href = "../accounts/account-page"
-        }
+
+        link.href = "agristrive.github.io/accounts/account-page"
         link.innerText = new_name
+    }else{
+        link.href = "agristrive.github.io/login/login"
+        link.innerText = "Login / Sign Up"
     }
 }
 
