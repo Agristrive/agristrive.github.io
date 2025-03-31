@@ -105,6 +105,12 @@ function add_inner(parent_body, element_type, element_pos, text, true_parent) {
         })
     }
 
+    if (element_type == "open_button") {
+        new_button.addEventListener("click", function(){
+            on_open(true_parent)
+        })
+    }
+
     new_button.addEventListener("mouseover", function() {
         on_hover(true, new_button.id);
     });
@@ -255,16 +261,14 @@ async function write_new_farms(){
                     
                     new_thing['name'] = name
                     new_thing['id'] = true_id
-                    let found_plots_data = null
+
                     for (let j=0; j<farms_data.length; j++){
                         if (farms_data[j]['id'] == true_id){
-                            found_plots_data = farms_data[j]['plots']
+                            new_thing['rows'] = farms_data[j]['rows']
+                            new_thing['columns'] = farms_data[j]['columns']
+                            new_thing['plots'] = farms_data[j]['plots']
                             break
                         }
-                    }
-
-                    if (found_plots_data){
-                        new_thing['plots'] = found_plots_data
                     }
                     new_farms_data.push(new_thing)
                 }
@@ -324,6 +328,13 @@ function on_settings(button){
 function on_delete(button){
     current_selected_button = button
     document.getElementById("delete_body").style.display = "flex"
+}
+
+function on_open(button){
+    let b_id = button.getAttribute("true_id")
+    document.cookie = "farm_id=" + b_id + ";domain=agristrive.github.io; path=/"
+    location.href = "../farm/farm"
+
 }
 
 function return_form_data(form){
@@ -430,7 +441,7 @@ function check_account(){
     let check_info_interval = setInterval(() => {
         if (document.body.getAttribute("data") && document.body.getAttribute("user")){
             load_account(JSON.parse(document.body.getAttribute("data")), document.body.getAttribute("user"))
-            console.log("loading account")
+            document.getElementById("new_button").style.display = "block"
             clearInterval(check_info_interval)
         }
     }
@@ -474,6 +485,6 @@ function on_page_start(){
             on_setting_submission(a, a.submitter.value)
         })
     }else{
-
+        location.href = "agristrive.github.io/login/login"
     }
 }

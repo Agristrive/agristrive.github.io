@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="../style.css">
+<script src="../reader.js"></script>
+<script src="account.js"></script>
+<html>
+    <title>Agristrive</title>
+    <body class="bg_color base_font" style="margin: 0px;" onload="page_open(); on_start()">
+        <div style="position: fixed; width: 100%; height: 100%; top: 0px; left: 0px;">
+            <img src="../img/agristrive_bg.jpg" alt="" style="width: 100%; height: 100%; opacity: 20%; pointer-events: none;">
+       </div>
+        <div id="container_body" class="main_color main_body" style="height: 300px;">
+            <div style="padding: 20px;"> 
+                <header class="base_font" style="font-size: 30px; text-align: center;">ACCOUNT</header>
+                <hr style="border-color: #5b4f47;">
+                <div style="width: 100%; height: 70%; padding: 30px">
+                    <img id="pfp" src="../img/cat.png" alt="" style="width: 150px; height: 150px; border: solid 3px black;">
+                    <div class="base_font" style="width: 75%; right: 60px; height: 70%; position: absolute; top: 100px; font-size: 35px;">
+                        <div id="username_label"> username </div>
+                        <button class="rename_input_submission" style="width: 250px; height: 30px; position: relative; top: 10px;"
+                         onclick="document.getElementById('rename_body').style.display = 'block';"> CHANGE NAME </button>
+                    </div>
+                </div>
+                <button style="width: 250px; height: 30px; position: absolute; bottom: 60px; right: 40px; color: red; border: solid red; border-radius: 10px;"
+                onclick="log_out()"> LOG OUT </button>
+                <button style="width: 250px; height: 30px; position: absolute; bottom: 20px;right: 40px; color: red; border: solid red; border-radius: 10px;"
+                onclick="document.getElementById('delete_body').style.display = 'block'"> DELETE ACCOUNT </button>
+            </div>
+        </div>
+
+        <div id="show_loading" class="base_font" style="opacity: 50%;background-color:gray;display:block; color: rgb(0, 0, 0);
+        position: fixed; margin-left: auto; height: 100%; width: 100%; font-size: 40px; top: 0px; text-align: center; line-height: 700px;">
+            <div> LOADING CONTENT...</div>
+        </div>
+
+        <div class="main_color" style="width: 100%; height: 120px; position: fixed; top: 0px; border-bottom: solid; border-color: #5b4f47;">
+            <img src="../img/agristrive_logo.png" alt="logo" style="width: 120px; height: 120px; position: absolute; top: 0px; left: 30px;">
+            <div class="base_font" style="position: absolute; font-size: 30px; padding-left: 150px; padding-top: 22px;">
+                <div style="height: fit-content; font-size: 40px;">Agristrive</div>
+                <div style="font-size: 20px;">Strive for Quality, Harvest Excellence</div>
+           </div>
+            <div class="base_font" style="position: absolute; text-align: right; right: 0px; bottom: 0px; font-size: 25px; padding: 10px;">
+                &nbsp &nbsp<a href="../" class="base_font" style="text-decoration: none">Home</a>
+                &nbsp &nbsp<a href="../myfarm/myfarms" class="base_font" style="text-decoration: none">My Farms</a>
+                &nbsp &nbsp<a href="../aboutus/aboutus" class="base_font" style="text-decoration: none">About Us</a>
+                &nbsp &nbsp<a id="account_tab" href="../login/login" class="base_font" style="text-decoration: none">Login / Sign Up</a>
+            </div>
+        </div> 
+
+        <div id="rename_body" style="position: fixed; width: 100%; height: 100%; top: 0px; display: none;">
+            <div id="fade_background" style="width: 100%; height: 100%; background-color: black; opacity: 40%; position: absolute;"></div>
+            <div id="rename_container" class="farm_rename_container main_color base_font" style="height: 300px;">
+                <div class="rename_container_text base_font" id="rename_text" style="height: 60px;">Change Name To</div>
+                <div class="form_container">
+                    <form id="rename_form" action="account.js" class="rename_form" style="top: 200px;" onsubmit="event.preventDefault();" onkeydown="return event.key != 'Enter'";>
+                        <input type="text" id="rename_form_input" name="new_name" class="rename_input base_font" placeholder="New Name" maxlength="32">
+                        <div id="warning_rename" style="position: absolute; top: 60px; font-size: 10px; color: red; display: none;">USERNAME IS EITHER ALREADY TAKEN OR NOT LONG ENOUGH (8 CHARS)</div>
+                        <input type="submit" name="cancel_new_name" class="rename_input_submission base_font" value="Cancel" style="left: 130px; height: 60px;bottom: 50px;">
+                        <input type="submit" name="confirm_new_name" class="rename_input_submission base_font" value="Confirm" style="right: 130px; height: 60px;bottom: 50px;">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="delete_body" style="position: fixed; width: 100%; height: 100%; top: 0px; display: none;">
+            <div id="fade_background" style="width: 100%; height: 100%; background-color: black; opacity: 40%; position: absolute;"></div>
+            <div id="rename_container" class="farm_rename_container main_color base_font" style="height: 300px;">
+                <div class="rename_container_text base_font" id="rename_text" style="height: 60px;">Are You Sure?</div>
+                <div class="form_container">
+                    <form id="delete_form" action="account.js" class="rename_form" style="top: 200px;" onsubmit="event.preventDefault();" onkeydown="return event.key != 'Enter'";>
+                        <input type="text" id="rename_form_input" name="new_name" class="rename_input base_font" placeholder="Type Your Username Here to Confirm Deletion" maxlength="32">
+                        <input type="submit" name="cancel_new_name" class="rename_input_submission base_font" value="Cancel" style="left: 130px; height: 60px;bottom: 50px;">
+                        <input type="submit" name="confirm_new_name" class="rename_input_submission base_font" value="Delete" style="right: 130px; height: 60px;bottom: 50px;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

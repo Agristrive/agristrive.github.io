@@ -142,4 +142,5 @@
     border-color: #5b4f47;
     border-width: 1px;
     background-color: rgb(233, 181, 118);
+    pointer-events: none;
 }

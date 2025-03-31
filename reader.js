@@ -1,5 +1,6 @@
 var db_url = 'https://api.jsonbin.io/v3/b/67e1b0a48561e97a50f20770'
 var current_api_key = "$2a$10$SGS2twtc4XUUm71aKY0CRutJwxVY5n7TqpLLRtAol7sKiwFtB.otu"
+
 async function get_json(){
     console.log("Attemping to access JSON")
     var a = null
@@ -74,7 +75,7 @@ async function signup(input_name, input_pass){
             window.location.href = "../myfarm/myfarms"
             write(JSON.stringify(result))
         }else{
-            user_already_exists()
+            document.getElementById("user_use_label").style.visibility = "visible"
         }
     })
 }
@@ -106,26 +107,56 @@ async function log_in(input_name, input_pass){
                 }
             }
         })
-    
+
     if (correct_user && correct_pass){
         document.body.setAttribute("data", JSON.stringify(data))
         document.body.setAttribute("user", correct_user)
+        console.log(correct_user)
+        change_href(correct_user)
         if (window.location.href == "https://agristrive.github.io/login/login"){
             window.location.href = "../myfarm/myfarms"
         }
     }else{
-        console.log("Incorrect username or password")
+        document.getElementById("log_in_error").style.visibility = "visible"
     }
+}
+
+function change_href(new_name){
+    let link = document.getElementById("account_tab")
+
+    link.href = "agristrive.github.io/accounts/account-page"
+    link.innerText = new_name
+}
+
+async function set_data_from_user(username){
+    let complete = false
+
+    if (username){
+        let current_data = await get_json()
+            .then(returned => {
+                document.body.setAttribute("data", JSON.stringify(returned))
+                complete = true
+            })
+    }
+
+    return complete
 }
 
 function on_start(){
     let wait_cookie = setInterval(() => {
-        console.log('running')
         if (document.body.getAttribute("cookied_user")){
             log_in(document.body.getAttribute("cookied_user"), document.body.getAttribute("cookied_password"))
             clearInterval(wait_cookie)
         }
-    }, 1000)
+    }, 333)
+
+    let data_set = setInterval(() => {
+        if (set_data_from_user(document.body.getAttribute("user"))){
+            console.log("j")
+            change_href(document.body.getAttribute("user"))
+            clearInterval(data_set)
+        }
+    }, 333)
 }
 
 function return_form_data(form){
