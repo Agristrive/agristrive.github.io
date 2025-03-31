@@ -2,7 +2,7 @@
     "crops":[
         {
             "name": "Carrot",
-            "value": "carrot",
+            "id": "carrot",
             "time_needed": 100800,
             "days_between_water": 7,
             "water_amount": 1,
@@ -14,7 +14,7 @@
         },
         {
             "name": "Tomato",
-            "value": "tomato",
+            "id": "tomato",
             "time_needed": 115200,
             "days_between_water": 3,
             "water_amount": 1,
@@ -26,7 +26,7 @@
         },
         {
             "name": "Onion",
-            "value": "onion",
+            "id": "onion",
             "time_needed": 144000,
             "days_between_water": 3,
             "water_amount": 1,
@@ -38,7 +38,7 @@
         },
         {
             "name": "Potato",
-            "value": "potato",
+            "id": "potato",
             "time_needed": 129600,
             "days_between_water": 3,
             "water_amount": 1,
@@ -50,7 +50,7 @@
         },
         {
             "name": "Strawberry (from seed)",
-            "value": "strawberry",
+            "id": "strawberry",
             "time_needed": 350401,
             "days_between_water": 3,
             "water_amount": 1,
@@ -62,7 +62,7 @@
         },
         {
             "name": "Strawberry (bare root)",
-            "value": "strawberry",
+            "id": "strawberry",
             "time_needed": 86400,
             "days_between_water": 3,
             "water_amount": 1,
@@ -74,7 +74,7 @@
         },
         {
             "name": "Strawberry(transplant)",
-            "value": "strawberry",
+            "id": "strawberry",
             "time_needed": 50400,
             "days_between_water": 3,
             "water_amount": 1,
