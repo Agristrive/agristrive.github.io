@@ -10,7 +10,8 @@
             "day_between_reharvest": 0,
             "special_info": "You can tell when carrots are ready by the length of the carrot top. <br>If the leaves reach to about 10-12 inches, it usually is ready.",
             "soil_depth": 0.25,
-            "spacing": 0.5
+            "spacing": 0.5,
+            "plot_color": "rgb(191, 128, 50)"
         },
         {
             "name": "Tomato",
@@ -22,7 +23,8 @@
             "day_between_reharvest": 0,
             "special_info": "Ripe tomatoes are shiny and glossy, and commonly bright red. <br>Different types of tomatoes may have different ripe colors.",
             "soil_depth": 20,
-            "spacing": 30
+            "spacing": 30,
+            "plot_color": "rgb(191, 50, 50)"
         },
         {
             "name": "Onion",
@@ -34,7 +36,8 @@
             "day_between_reharvest": 0,
             "special_info": "Onions are typically ready to harvest once its leaves <br>have completely fallen over.",
             "soil_depth": 16,
-            "spacing": 5
+            "spacing": 5,
+            "plot_color": "rgb(186, 175, 110)"
         },
         {
             "name": "Potato",
@@ -46,10 +49,11 @@
             "day_between_reharvest": 0,
             "special_info": "Potatoes are usually ready when its leaves are <br>completely dried and dead.",
             "soil_depth": 5,
-            "spacing": 12
+            "spacing": 12,
+            "plot_color": "rgb(92, 77, 45)"
         },
         {
-            "name": "Strawberry (from seed)",
+            "name": "Strawberry",
             "id": "strawberry",
             "time_needed": 100800,
             "days_between_water": 3,
@@ -58,7 +62,8 @@
             "day_between_reharvest": 0,
             "special_info": "The berry is usually ready to harvest when it is bright red. <br> Make sure the berry is firm, but not hard.",
             "soil_depth": 3,
-            "spacing": 18
+            "spacing": 18,
+            "plot_color": "rgb(255, 68, 91)"
         }
     ]
 }
