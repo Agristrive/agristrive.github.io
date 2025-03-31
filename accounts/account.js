@@ -19,7 +19,7 @@ function page_open(){
         document.body.setAttribute("cookied_user", returned[0])
         document.body.setAttribute("cookied_password", returned[1])
     }else{
-        location.href = "agristrive.github.io/login/login"
+        location.href = "../login/login"
     }
 
     document.getElementById("rename_form").addEventListener("submit", function(a){
