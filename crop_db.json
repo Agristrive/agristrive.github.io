@@ -50,7 +50,7 @@
         },
         {
             "name": "Strawberry (from seed)",
-            "id": "strawberryfs",
+            "id": "strawberry",
             "time_needed": 350401,
             "days_between_water": 3,
             "water_amount": 1,
@@ -62,7 +62,7 @@
         },
         {
             "name": "Strawberry (bare root)",
-            "id": "strawberrybr",
+            "id": "strawberry",
             "time_needed": 86400,
             "days_between_water": 3,
             "water_amount": 1,
@@ -74,7 +74,7 @@
         },
         {
             "name": "Strawberry(transplant)",
-            "id": "strawberrytp",
+            "id": "strawberry",
             "time_needed": 50400,
             "days_between_water": 3,
             "water_amount": 1,
