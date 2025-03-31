@@ -135,7 +135,6 @@ async function on_rename_submit(a, type){
 
 function check_cookie(){
     let cookie_data = document.cookie;
-    cookie_data = "username=poteto; password=CdT29922; farm_id=1743026845010"
     let returned = [];
 
     for (let i = 0; i < cookie_data.split(";").length; i++) {
