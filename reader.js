@@ -110,7 +110,6 @@ async function log_in(input_name, input_pass){
     if (correct_user && correct_pass){
         document.body.setAttribute("data", JSON.stringify(data))
         document.body.setAttribute("user", correct_user)
-        alert(document.cookie)
         console.log(correct_user)
         change_href(correct_user)
         if (window.location.href == "https://agristrive.github.io/login/login"){
