@@ -64,6 +64,32 @@
             "soil_depth": 0.5,
             "spacing": 4,
             "plot_color": "rgb(255, 68, 91)"
-        }
+        },
+        {
+            "name": "Lettuce",
+            "id": "lettuce",
+            "time_needed": 64800,
+            "days_between_water": 1,
+            "water_amount": 400,
+            "can_reharvest": false,
+            "day_between_reharvest": 0,
+            "special_info": "Lettuce plants are usually ready to pick once they are about 6 inches long.",
+            "soil_depth": 0.125,
+            "spacing": 8,
+            "plot_color": "rgb(169, 207, 138)"
+      },
+      {
+            "name": "Cucumber",
+            "id": "cucumber",
+            "time_needed": 72000,
+            "days_between_water": 6,
+            "water_amount": 1,
+            "can_reharvest": true,
+            "day_between_reharvest": 2,
+            "special_info": "Cucumbers can be picked once they are green. <br> You can pick them early or later to get your desired size.",
+            "soil_depth": 0.5,
+            "spacing": 12,
+            "plot_color": "rgb(118, 133, 69)"
+       }
     ]
 }
