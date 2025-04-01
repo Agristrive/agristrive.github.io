@@ -448,7 +448,7 @@ function check_account(){
     ,500)
 }
 
-function check_cookie() {
+function await_cookie() {
     let cookie_data = document.cookie;
     let returned = [null, null];
     console.log(cookie_data)
@@ -468,7 +468,7 @@ function check_cookie() {
 }
 
 async function on_page_start(){
-    let returned =  await check_cookie()
+    let returned =  await await_cookie()
     check_account()
     console.log(returned)
     if (returned[0] && returned[1]){
