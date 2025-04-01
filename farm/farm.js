@@ -28,7 +28,7 @@ var current_hover_plot = null
 function start_farm(){
     populate_selection()
     document.addEventListener('contextmenu', event => event.preventDefault());
-    let cookie_val = check_cookie()
+    let cookie_val = get_cookie()
     //cookie_val = "1743026845010"
 
     if (cookie_val){
@@ -121,7 +121,7 @@ async function update_plant_data(special, list){
     }
 }
 
-function check_cookie(){
+function get_cookie(){
     let cookie_data = document.cookie
 
     //cookie_data = "username=poteto; password=CdT29922; farm_id=1743026845010"
