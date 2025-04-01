@@ -29,7 +29,6 @@ function start_farm(){
     populate_selection()
     document.addEventListener('contextmenu', event => event.preventDefault());
     let cookie_val = get_cookie()
-    //cookie_val = "1743026845010"
 
     if (cookie_val){
         document.body.setAttribute('farm_id', cookie_val)
@@ -124,7 +123,6 @@ async function update_plant_data(special, list){
 function get_cookie(){
     let cookie_data = document.cookie
 
-    //cookie_data = "username=poteto; password=CdT29922; farm_id=1743026845010"
     var returned
     for (let i = 0; i < cookie_data.split(";").length; i++) {
         let index = cookie_data.split(";")[i].split("=")[0].trim();
@@ -858,8 +856,6 @@ document.onmouseup = async function(a){
             }
             plot.style.backgroundImage = "url(../img/" + selected_crop_value + ".png)"
             plot.style.backgroundColor = plot.getAttribute("base-color")
-
-            console.log(plot.style.backgroundImage)
         }
     }else if (inputType == "remove"){
         remove_plots(selected_plots)
