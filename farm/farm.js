@@ -48,7 +48,7 @@ function start_farm(){
 
 setInterval(() => {
     update_plant_data()
-}, 5000)
+}, 333)
 
 async function update_plant_data(special, list){
     let remove_list = []
