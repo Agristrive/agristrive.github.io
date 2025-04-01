@@ -564,7 +564,7 @@ async function update_info(plot){
             "Time Until Next Watering: " + water_time_remaining + "<br>" +
             "Water Amount: " + watering_amount + " mL" + "<br>" +
             "Can Reharvest: " + can_reharvest + "<br>" +
-            "Other Info: " + additional + "<br>" +
+            "Other Info: " + additional + "<br> <br>" +
             "Recommended Soil Depth: " + depth_info +  " Inches <br>" +
             "Recommended Spacing: " + spacing_info + " Inches <br>" +
             "Recommended Spacing (Rows): 12-14 Inches <br>"
