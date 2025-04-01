@@ -156,7 +156,7 @@ function log_out(){
     document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;domain=agristrive.github.io";
     document.cookie = "farm_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;domain=agristrive.github.io";
 
-    location.href = "agristrive.github.io/login/login"
+    location.href = "../login/login"
 }
 
 async function delete_account(a, type){
