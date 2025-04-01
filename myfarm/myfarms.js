@@ -485,6 +485,6 @@ function on_page_start(){
             on_setting_submission(a, a.submitter.value)
         })
     }else{
-        location.href = "agristrive.github.io/login/login"
+        location.href = "../login/login"
     }
 }
