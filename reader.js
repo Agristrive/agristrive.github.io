@@ -148,7 +148,23 @@ async function set_data_from_user(username){
     return complete
 }
 
+function check_cookie() {
+    let cookie_data = document.cookie;
+
+    for (let i = 0; i < cookie_data.split(";").length; i++) {
+        let index = cookie_data.split(";")[i].split("=")[0].trim();
+        let value = cookie_data.split(";")[i].split("=")[1];
+
+        if (index == "username") {
+            document.body.setAttribute("cookied_user", value);
+        } else if (index == "password") {
+            document.body.setAttribute("cookied_password", value);
+        }
+    }
+}
+
 function on_start(){
+    check_cookie()
     let wait_cookie = setInterval(() => {
         if (document.body.getAttribute("cookied_user")){
             log_in(document.body.getAttribute("cookied_user"), document.body.getAttribute("cookied_password"))
