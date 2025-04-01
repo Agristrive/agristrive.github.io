@@ -41,7 +41,7 @@ function start_farm(){
             }
         }, 100);
     }else{
-        location.href = "agristrive.github.io/login/login"
+        location.href = "../login/login"
     }
     size_change(null, 0, true)
 }
