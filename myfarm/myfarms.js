@@ -467,10 +467,10 @@ function check_cookie() {
     return returned;
 }
 
-function on_page_start(){
-    let returned = check_cookie()
+async function on_page_start(){
+    let returned =  await check_cookie()
     check_account()
-
+    console.log(returned)
     if (returned[0] && returned[1]){
         document.body.setAttribute("cookied_user", returned[0])
         document.body.setAttribute("cookied_password", returned[1])
