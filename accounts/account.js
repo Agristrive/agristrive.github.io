@@ -116,6 +116,7 @@ async function on_rename_submit(a, type){
                 document.getElementById("rename_body").style.display = "none"
                 document.cookie = "username=" + new_user + ";domain=agristrive.github.io; path=/"
                 document.getElementById('warning_rename').style.display = 'none'
+                location.reload()
             })
 
          } else{
