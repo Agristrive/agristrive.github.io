@@ -88,14 +88,14 @@ async function on_rename_submit(a, type){
 
                 console.log(new_data['user-data']['users'])
                 let user_name_already_exists = false
-                for (let i=0;new_data['user-data']['users'].length; i++){
+                for (let i=0;i<new_data['user-data']['users'].length; i++){
                     if (new_data['user-data']['users'][i]['username'] == new_user){
                         valid_user = false;
                         return
                     }
                 }
 
-                for (let i=0; new_data['user-data']['users'].length; i++){
+                for (let i=0; i<new_data['user-data']['users'].length; i++){
                     if (new_data['user-data']['users'][i]['username'] == document.body.getAttribute('user')){
                         new_data['user-data']['users'][i]['username'] = new_user
                         break
