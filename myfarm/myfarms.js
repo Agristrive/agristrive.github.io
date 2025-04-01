@@ -450,7 +450,7 @@ function check_account(){
 
 function check_cookie() {
     let cookie_data = document.cookie;
-    let returned = [];
+    let returned = [null, null];
     console.log(cookie_data)
     for (let i = 0; i < cookie_data.split(";").length; i++) {
         let index = cookie_data.split(";")[i].split("=")[0].trim();
