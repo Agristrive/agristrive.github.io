@@ -165,8 +165,6 @@ function check_cookie() {
 
 function on_start(){
     check_cookie()
-
-    document.addEventListener('contextmenu', event => event.preventDefault())
     
     let wait_cookie = setInterval(() => {
         if (document.body.getAttribute("cookied_user")){
